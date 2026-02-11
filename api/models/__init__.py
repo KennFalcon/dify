@@ -26,8 +26,18 @@ from .dataset import (
     TidbAuthBinding,
     Whitelist,
 )
-from .enums import CreatorUserRole, UserFrom, WorkflowRunTriggeredFrom
+from .enums import (
+    AppTriggerStatus,
+    AppTriggerType,
+    CreatorUserRole,
+    UserFrom,
+    WorkflowRunTriggeredFrom,
+    WorkflowTriggerStatus,
+)
+from .execution_extra_content import ExecutionExtraContent, HumanInputContent
+from .human_input import HumanInputForm
 from .model import (
+    AccountTrialAppRecord,
     ApiRequest,
     ApiToken,
     App,
@@ -40,6 +50,7 @@ from .model import (
     DatasetRetrieverResource,
     DifySetup,
     EndUser,
+    ExporleBanner,
     IconType,
     InstalledApp,
     Message,
@@ -53,7 +64,9 @@ from .model import (
     Site,
     Tag,
     TagBinding,
+    TenantCreditPool,
     TraceAppConfig,
+    TrialApp,
     UploadFile,
 )
 from .oauth import DatasourceOauthParamConfig, DatasourceProvider
@@ -79,12 +92,20 @@ from .tools import (
     ToolModelInvoke,
     WorkflowToolProvider,
 )
+from .trigger import (
+    AppTrigger,
+    TriggerOAuthSystemClient,
+    TriggerOAuthTenantClient,
+    TriggerSubscription,
+    WorkflowSchedulePlan,
+)
 from .web import PinnedConversation, SavedMessage
 from .workflow import (
     ConversationVariable,
     Workflow,
     WorkflowAppLog,
     WorkflowAppLogCreatedFrom,
+    WorkflowArchiveLog,
     WorkflowNodeExecutionModel,
     WorkflowNodeExecutionOffload,
     WorkflowNodeExecutionTriggeredFrom,
@@ -99,6 +120,7 @@ __all__ = [
     "Account",
     "AccountIntegrate",
     "AccountStatus",
+    "AccountTrialAppRecord",
     "ApiRequest",
     "ApiToken",
     "ApiToolProvider",
@@ -106,9 +128,12 @@ __all__ = [
     "AppAnnotationHitHistory",
     "AppAnnotationSetting",
     "AppDatasetJoin",
-    "AppMCPServer",  # Added
+    "AppMCPServer",
     "AppMode",
     "AppModelConfig",
+    "AppTrigger",
+    "AppTriggerStatus",
+    "AppTriggerType",
     "BuiltinToolProvider",
     "CeleryTask",
     "CeleryTaskSet",
@@ -132,8 +157,12 @@ __all__ = [
     "DocumentSegment",
     "Embedding",
     "EndUser",
+    "ExecutionExtraContent",
+    "ExporleBanner",
     "ExternalKnowledgeApis",
     "ExternalKnowledgeBindings",
+    "HumanInputContent",
+    "HumanInputForm",
     "IconType",
     "InstalledApp",
     "InvitationCode",
@@ -160,6 +189,7 @@ __all__ = [
     "Tenant",
     "TenantAccountJoin",
     "TenantAccountRole",
+    "TenantCreditPool",
     "TenantDefaultModel",
     "TenantPreferredModelProvider",
     "TenantStatus",
@@ -169,18 +199,25 @@ __all__ = [
     "ToolLabelBinding",
     "ToolModelInvoke",
     "TraceAppConfig",
+    "TrialApp",
+    "TriggerOAuthSystemClient",
+    "TriggerOAuthTenantClient",
+    "TriggerSubscription",
     "UploadFile",
     "UserFrom",
     "Whitelist",
     "Workflow",
     "WorkflowAppLog",
     "WorkflowAppLogCreatedFrom",
+    "WorkflowArchiveLog",
     "WorkflowNodeExecutionModel",
     "WorkflowNodeExecutionOffload",
     "WorkflowNodeExecutionTriggeredFrom",
     "WorkflowPause",
     "WorkflowRun",
     "WorkflowRunTriggeredFrom",
+    "WorkflowSchedulePlan",
     "WorkflowToolProvider",
+    "WorkflowTriggerStatus",
     "WorkflowType",
 ]

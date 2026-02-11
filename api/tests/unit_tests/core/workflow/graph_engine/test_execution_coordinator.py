@@ -2,6 +2,8 @@
 
 from unittest.mock import MagicMock
 
+import pytest
+
 from core.workflow.graph_engine.command_processing.command_processor import CommandProcessor
 from core.workflow.graph_engine.domain.graph_execution import GraphExecution
 from core.workflow.graph_engine.graph_state_manager import GraphStateManager
@@ -50,13 +52,11 @@ def test_handle_pause_noop_when_execution_running() -> None:
     state_manager.clear_executing.assert_not_called()
 
 
-def test_is_execution_complete_when_paused() -> None:
-    """Paused execution should be treated as complete."""
+def test_has_executing_nodes_requires_pause() -> None:
     graph_execution = GraphExecution(workflow_id="workflow")
     graph_execution.start()
-    graph_execution.pause("Awaiting input")
 
-    coordinator, state_manager, _worker_pool = _build_coordinator(graph_execution)
-    state_manager.is_execution_complete.return_value = False
+    coordinator, _, _ = _build_coordinator(graph_execution)
 
-    assert coordinator.is_execution_complete()
+    with pytest.raises(AssertionError):
+        coordinator.has_executing_nodes()
